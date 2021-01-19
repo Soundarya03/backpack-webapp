@@ -7,6 +7,8 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
+  var choice = 1;
+
   @override
   Widget build(BuildContext context) {
     var mediumFont = MediaQuery.of(context).size.height * 0.038;
@@ -16,10 +18,9 @@ class _LoginWidgetState extends State<LoginWidget> {
     return Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
-      //crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
-          "Student Login",
+          (choice == 2 ? "Teacher" : "Student") + " Login",
           style: GoogleFonts.fredokaOne(
             fontSize: mediumFont * 1.7,
             color: Color(0xff0c2461),
@@ -30,7 +31,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         ),
         TextFormField(
           decoration: InputDecoration(
-            hintText: 'Username / Registered e-mail',
+            hintText: choice == 2 ? 'Your Username' : 'Your Admission Number',
             isDense: true,
             focusColor: Color(0xff0c2461),
           ),
@@ -39,6 +40,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           height: height * 0.02,
         ),
         TextFormField(
+          obscureText: true,
           decoration: InputDecoration(
             hintText: 'Password',
             isDense: true,
@@ -76,22 +78,27 @@ class _LoginWidgetState extends State<LoginWidget> {
         SizedBox(
           height: height * 0.15,
         ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 5),
+          child: Text(
+            'I\'m a',
+            style: TextStyle(
+              fontSize: mediumFont * 0.7,
+            ),
+          ),
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'New here?',
-              style: TextStyle(
-                color: Color(0xff0c2461),
-                fontSize: mediumFont * 0.7,
-              ),
-            ),
-            SizedBox(
-              width: width * 0.005,
-            ),
             OutlinedButton(
-              onPressed: () => {},
+              onPressed: () => {
+                setState(() {
+                  choice = 1;
+                })
+              },
               style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                    choice == 1 ? Color(0xff2fc7b5) : Colors.transparent),
                 padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
                     EdgeInsets.fromLTRB(25, 10, 25, 10)),
                 side: MaterialStateProperty.all<BorderSide>(BorderSide(
@@ -100,7 +107,61 @@ class _LoginWidgetState extends State<LoginWidget> {
                 )),
               ),
               child: Text(
-                'Sign Up',
+                'Student',
+                style: TextStyle(
+                  color: Color(0xff0c2461),
+                  fontSize: mediumFont * 0.7,
+                ),
+              ),
+            ),
+            SizedBox(
+              width: width * 0.005,
+            ),
+            OutlinedButton(
+              onPressed: () => {
+                setState(() {
+                  choice = 2;
+                })
+              },
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                    choice == 2 ? Color(0xff2fc7b5) : Colors.transparent),
+                padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                    EdgeInsets.fromLTRB(25, 10, 25, 10)),
+                side: MaterialStateProperty.all<BorderSide>(BorderSide(
+                  color: Color(0xff2fc7b5),
+                  width: 2,
+                )),
+              ),
+              child: Text(
+                'Teacher',
+                style: TextStyle(
+                  color: Color(0xff0c2461),
+                  fontSize: mediumFont * 0.7,
+                ),
+              ),
+            ),
+            SizedBox(
+              width: width * 0.005,
+            ),
+            OutlinedButton(
+              onPressed: () => {
+                setState(() {
+                  choice = 3;
+                })
+              },
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                    choice == 3 ? Color(0xff2fc7b5) : Colors.transparent),
+                padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                    EdgeInsets.fromLTRB(25, 10, 25, 10)),
+                side: MaterialStateProperty.all<BorderSide>(BorderSide(
+                  color: Color(0xff2fc7b5),
+                  width: 2,
+                )),
+              ),
+              child: Text(
+                'Admin',
                 style: TextStyle(
                   color: Color(0xff0c2461),
                   fontSize: mediumFont * 0.7,

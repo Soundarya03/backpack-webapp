@@ -29,6 +29,9 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
+    var mediumFont = MediaQuery.of(context).size.height * 0.038;
+    var isNew = false;
+
     return Container(
       height: MediaQuery.of(context).size.height,
       child: Row(
@@ -52,7 +55,7 @@ class _LandingPageState extends State<LandingPage> {
                 Text(
                   "For all things school",
                   style: GoogleFonts.raleway(
-                    fontSize: 16,
+                    fontSize: mediumFont * 0.7,
                     color: Colors.grey,
                   ),
                 ),
