@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_trials/admin_dialog.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginWidget extends StatefulWidget {
@@ -148,6 +149,7 @@ class _LoginWidgetState extends State<LoginWidget> {
               onPressed: () => {
                 setState(() {
                   choice = 3;
+                  adminDialog(context);
                 })
               },
               style: ButtonStyle(
