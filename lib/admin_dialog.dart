@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_web_trials/admin.dart';
 
 adminDialog(BuildContext context) async {
   var size = MediaQuery.of(context).size;
@@ -78,9 +79,13 @@ adminDialog(BuildContext context) async {
                         backgroundColor:
                             MaterialStateProperty.all<Color>(Color(0xff2fc7b5)),
                       ),
-                      onPressed: () => {
-                            //if(keyController.text == 'ritnps')
-                          },
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AdminPortal()),
+                        );
+                      },
                       child: Text(
                         'Login',
                         style: TextStyle(
@@ -88,13 +93,19 @@ adminDialog(BuildContext context) async {
                           fontSize: mediumFont * 0.8,
                         ),
                       )),
+                  SizedBox(
+                    height: size.height * 0.05,
+                  ),
+                  Text(
+                    'Nothing to see here',
+                  ),
                 ],
               ),
             ),
           ),
         ],
       ),
-    ),
+    ), //STOP HERE PLS
   );
 
   return showDialog(
