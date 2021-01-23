@@ -11,7 +11,8 @@ class _AdminPortalState extends State<AdminPortal> {
   String op = '';
 
   Future<void> makeRequest() async {
-    final response = await http.get('http://localhost:3000/enrollstudent');
+    final response = await http.get('http://localhost:3000/enrollstudent',
+        headers: {'Content-Type': 'text/xml; charset=utf-8'});
     setState(() {
       op = response.toString() + " DONE SUCCESSFULLY";
     });
